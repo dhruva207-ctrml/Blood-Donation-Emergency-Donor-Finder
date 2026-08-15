@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blood Donation Finder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <h1>Blood Donation & Emergency Donor Finder</h1>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="message-box" id="messageBox"></section>
+
+      <section class="dashboard">
+        <div class="card">
+          <h2>Donor Registration</h2>
+          <form id="donorForm">
+            <div class="grid">
+              <div class="form-group">
+                <label for="donorName">Name</label>
+                <input type="text" id="donorName" name="donorName" placeholder="Enter donor name" />
+                <small class="field-error" id="donorNameError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="donorBloodGroup">Blood Group</label>
+                <select id="donorBloodGroup" name="donorBloodGroup">
+                  <option value="">Select</option>
+                  <option>A+</option>
+                  <option>A-</option>
+                  <option>B+</option>
+                  <option>B-</option>
+                  <option>O+</option>
+                  <option>O-</option>
+                  <option>AB+</option>
+                  <option>AB-</option>
+                </select>
+                <small class="field-error" id="donorBloodGroupError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="donorContact">Contact</label>
+                <input type="tel" inputmode="numeric" id="donorContact" name="donorContact" placeholder="10-digit phone number" pattern="[0-9]{10}" />
+                <small class="field-error" id="donorContactError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="donorLocation">Location</label>
+                <input type="text" id="donorLocation" name="donorLocation" placeholder="City or area" />
+                <small class="field-error" id="donorLocationError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="donorAvailability">Availability</label>
+                <select id="donorAvailability" name="donorAvailability">
+                  <option value="">Select</option>
+                  <option>Available</option>
+                  <option>Busy</option>
+                  <option>Unavailable</option>
+                </select>
+                <small class="field-error" id="donorAvailabilityError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="donationChoice">Donation History</label>
+                <select id="donationChoice" name="donationChoice">
+                  <option value="has-donated">I have donated before</option>
+                  <option value="never-donated">Never donated</option>
+                </select>
+                <small class="field-error" id="donationChoiceError"></small>
+              </div>
+
+              <div class="form-group" id="lastDonationDateGroup">
+                <label for="lastDonationDate">Last Donation Date</label>
+                <input type="date" id="lastDonationDate" name="lastDonationDate" />
+                <small class="field-error" id="lastDonationDateError"></small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="donorNotes">Notes</label>
+              <textarea id="donorNotes" name="donorNotes" rows="3" placeholder="Extra information"></textarea>
+              <small class="field-error" id="donorNotesError"></small>
+            </div>
+
+            <div class="button-row">
+              <button type="submit" class="primary-btn">Save Donor</button>
+              <button type="button" class="secondary-btn" id="resetDonorBtn">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Emergency Request</h2>
+          <form id="requestForm">
+            <div class="grid">
+              <div class="form-group">
+                <label for="requiredBloodGroup">Required Blood Group</label>
+                <select id="requiredBloodGroup" name="requiredBloodGroup">
+                  <option value="">Select</option>
+                  <option>A+</option>
+                  <option>A-</option>
+                  <option>B+</option>
+                  <option>B-</option>
+                  <option>O+</option>
+                  <option>O-</option>
+                  <option>AB+</option>
+                  <option>AB-</option>
+                </select>
+                <small class="field-error" id="requiredBloodGroupError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="requestQuantity">Quantity (Units)</label>
+                <input type="number" id="requestQuantity" name="requestQuantity" min="1" placeholder="1" />
+                <small class="field-error" id="requestQuantityError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="patientName">Patient Name</label>
+                <input type="text" id="patientName" name="patientName" placeholder="Patient name" />
+                <small class="field-error" id="patientNameError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="hospitalName">Hospital Name</label>
+                <input type="text" id="hospitalName" name="hospitalName" placeholder="Hospital name" />
+                <small class="field-error" id="hospitalNameError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="requestLocation">Location</label>
+                <input type="text" id="requestLocation" name="requestLocation" placeholder="Hospital or city" />
+                <small class="field-error" id="requestLocationError"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="requiredDateTime">Required Date & Time</label>
+                <input type="datetime-local" id="requiredDateTime" name="requiredDateTime" />
+                <small class="field-error" id="requiredDateTimeError"></small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="requestDescription">Description</label>
+              <textarea id="requestDescription" name="requestDescription" rows="3" placeholder="Why is blood required?"></textarea>
+              <small class="field-error" id="requestDescriptionError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="requestContact">Contact</label>
+              <input type="tel" inputmode="numeric" id="requestContact" name="requestContact" placeholder="10-digit contact number" pattern="[0-9]{10}" />
+              <small class="field-error" id="requestContactError"></small>
+            </div>
+
+            <div class="button-row">
+              <button type="submit" class="primary-btn danger-btn">Create Request</button>
+              <button type="button" class="secondary-btn" id="resetRequestBtn">Reset</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="listing-section">
+        <div class="card">
+          <div class="section-head">
+            <h2>Donor Directory</h2>
+            <div class="filters">
+              <input type="text" id="donorSearch" placeholder="Search by name" />
+              <select id="donorBloodFilter">
+                <option value="">All blood groups</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+              </select>
+              <input type="text" id="donorLocationFilter" placeholder="Filter by location" />
+            </div>
+          </div>
+          <div id="donorList" class="card-grid"></div>
+        </div>
+
+        <div class="card">
+          <div class="section-head">
+            <h2>Emergency Requests</h2>
+          </div>
+          <div class="filters compact">
+            <input type="text" id="requestSearch" placeholder="Search request" />
+          </div>
+          <div id="requestList" class="request-list"></div>
+        </div>
+      </section>
+
+      <section class="card details-panel">
+        <h2>Request Details</h2>
+        <div id="requestDetails">
+          <p class="empty-state">Select a request to view details.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

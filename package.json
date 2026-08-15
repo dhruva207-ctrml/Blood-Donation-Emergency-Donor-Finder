@@ -1,0 +1,21 @@
+{
+  "name": "blood-donation-emergency-finder",
+  "version": "1.0.0",
+  "description": "Blood Donation & Emergency Donor Finder project using Node.js and Express",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
+  },
+  "keywords": [
+    "blood-donation",
+    "express",
+    "node",
+    "api"
+  ],
+  "author": "College Project",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

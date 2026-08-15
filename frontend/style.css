@@ -1,0 +1,316 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  color: #222;
+}
+
+.container {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+
+.topbar {
+  background: linear-gradient(135deg, #d32f2f, #b71c1c);
+  color: white;
+  padding: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.topbar h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+main {
+  padding: 30px 0 50px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+label {
+  font-weight: 600;
+  color: #444;
+}
+
+.field-error {
+  color: #c62828;
+  font-size: 0.8rem;
+  min-height: 16px;
+  display: block;
+}
+
+.input-error {
+  border-color: #d32f2f !important;
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.12);
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid rgba(211, 47, 47, 0.2);
+  border-color: #d32f2f;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #d32f2f;
+  color: white;
+}
+
+.danger-btn {
+  background: #c62828;
+}
+
+.secondary-btn {
+  background: #e6e6e6;
+  color: #333;
+}
+
+.message-box {
+  display: none;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.message-box.success {
+  display: block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.message-box.error {
+  display: block;
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.listing-section {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  min-width: 130px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.donor-card,
+.request-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 14px;
+  background: #fffaf7;
+}
+
+.donor-card h3,
+.request-item h3 {
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.meta {
+  font-size: 0.92rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-available,
+.status-pending {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-busy,
+.status-matched {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.status-unavailable,
+.status-completed {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.status-cancelled {
+  background: #fbe9e7;
+  color: #d84315;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.small-btn {
+  padding: 8px 10px;
+  font-size: 0.85rem;
+}
+
+.edit-btn {
+  background: #1976d2;
+  color: white;
+}
+
+.delete-btn {
+  background: #d32f2f;
+  color: white;
+}
+
+.request-list {
+  display: grid;
+  gap: 12px;
+}
+
+.request-item {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.request-item:hover {
+  transform: translateY(-2px);
+}
+
+.request-item.active {
+  border-color: #d32f2f;
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.1);
+}
+
+.details-panel {
+  min-height: 200px;
+}
+
+.details-box {
+  line-height: 1.8;
+}
+
+.details-box strong {
+  color: #333;
+}
+
+.empty-state {
+  color: #666;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .dashboard,
+  .listing-section,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar h1 {
+    font-size: 1.6rem;
+  }
+
+  .button-row,
+  .card-actions,
+  .section-head,
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
