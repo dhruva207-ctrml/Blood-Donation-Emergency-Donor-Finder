@@ -70,13 +70,19 @@ The backend supports CRUD operations for donor and request management.
 ### GET all donors
 
 ```md
-![Get Donors API](images/get-donors.png)
+![Get Donors API](images/itsgetdonors.png)
+```
+
+### POST create donor
+
+```md
+![Create Donor API](images/itspostdonors.png)
 ```
 
 ### POST create request
 
 ```md
-![Create Request API](images/post-request.png)
+![Create Request API](images/itspostrequests.png)
 ```
 
 ## Sample Data for Demo
