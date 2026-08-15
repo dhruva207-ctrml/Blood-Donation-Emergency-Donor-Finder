@@ -1,30 +1,33 @@
 # Blood Donation & Emergency Donor Finder
 
-A simple blood donation and emergency donor finder application built with:
+A blood donation and emergency donor finder project built with HTML, CSS, JavaScript, and Node.js. This project helps users register donors, create emergency blood requests, and manage donor availability using REST API endpoints.
 
-- **Frontend:** HTML, CSS, JavaScript
-- **Backend:** Node.js + Express
-- **Data Storage:** In-memory arrays (temporary storage)
-- **API Testing:** Postman
-- **Database:** None (no SQL or authentication)
+## Project Overview
 
-The frontend and backend are intentionally separated. The frontend is a static page demonstrating the user interface, while the backend provides API endpoints for testing in Postman. They are not connected at this stage.
+This project is designed to demonstrate a complete backend API workflow for a healthcare support application. The frontend provides a static user interface while the backend exposes REST API routes for donor and request management.
+
+## Tech Stack
+
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js + Express
+- API Testing: Postman
+- Data Storage: In-memory arrays
+- Database: Not used in this version
 
 ## Features
 
-- **Donor Management:** Register donors with blood group, location, and availability
-- **Emergency Requests:** Create and track blood requests with patient and hospital details
-- **Data Lists:** View all registered donors and emergency requests
-- **Form Validation:** Comprehensive field validation for all user inputs
-- **Contact Validation:** 10-digit numeric phone numbers required
-- **Smart Defaults:** First-time donor support with automatic default values
-- **Real-time Feedback:** Inline validation messages in the UI
-- **Temporary Storage:** In-memory arrays preserve data during the session
-- **API Testing:** RESTful endpoints fully tested with Postman
+- Register donor details with blood group, contact, location, and availability
+- Add emergency blood requests with patient and hospital data
+- View all donors and all requests
+- Fetch a single donor or request by ID
+- Update donor and request details
+- Delete donors and requests
+- Validate phone numbers, blood groups, and status values
+- Add default values for first-time donors and new requests
 
 ## Folder Structure
 
-```
+```bash
 capst/
 ├── backend/
 │   └── server.js
@@ -37,77 +40,48 @@ capst/
 └── node_modules/
 ```
 
-## Prerequisites
+## Demo
 
-- Node.js (v14 or higher)
-- npm (Node Package Manager)
-- A modern web browser
-- Postman (for API testing)
+Use one homepage screenshot showing both the donor form and emergency request form together.
 
-## How to Run
+```md
+![Homepage - Donor and Request Forms](images/homepage.png)
+```
 
-1. Navigate to the project folder:
-   ```bash
-   cd capst
-   ```
+## API Operations
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+The backend supports CRUD operations for donor and request management.
 
-3. Start the backend server:
-   ```bash
-   npm start
-   ```
-   The backend will run on `http://localhost:3000`
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/donors` | View all donors |
+| POST | `/donors` | Add a donor |
+| GET | `/donors/:id` | View one donor |
+| PUT | `/donors/:id` | Update donor information |
+| DELETE | `/donors/:id` | Delete a donor |
+| GET | `/requests` | View all emergency requests |
+| POST | `/requests` | Create an emergency request |
+| GET | `/requests/:id` | View one request |
+| PUT | `/requests/:id` | Update a request |
+| DELETE | `/requests/:id` | Delete a request |
 
-4. Open the frontend in your browser:
-   - Open `frontend/index.html` directly in your browser
+## API Testing Demo
 
-## Backend API Endpoints
+### GET all donors
 
-### Donors
+```md
+![Get Donors API](images/get-donors.png)
+```
 
-- `POST /donors` - Add a new donor
-- `GET /donors` - View all donors
-- `GET /donors/:id` - View a single donor
-- `PUT /donors/:id` - Update donor details
-- `DELETE /donors/:id` - Delete a donor
+### POST create request
 
-### Emergency Requests
+```md
+![Create Request API](images/post-request.png)
+```
 
-- `POST /requests` - Create a new emergency request
-- `GET /requests` - View all requests
-- `GET /requests/:id` - View a single request
-- `PUT /requests/:id` - Update request details
-- `DELETE /requests/:id` - Delete a request
+## Sample Data for Demo
 
-## Validations Implemented
-
-### Donor validation
-
-- Name is required
-- Blood group must be one of: `A+`, `A-`, `B+`, `B-`, `O+`, `O-`, `AB+`, `AB-`
-- Contact must be exactly 10 digits
-- Location is required
-- Availability must be one of: `Available`, `Busy`, `Unavailable`
-- If no donation date is entered, it stores as `Never donated`
-- If no notes are entered, it stores as `First-time donor.`
-
-### Request validation
-
-- Required blood group is required and must be valid
-- Quantity must be a positive whole number
-- Patient name, hospital name, location, date-time, description, and contact are required
-- Contact must be exactly 10 digits
-- Status is optional while creating a request
-- If status is missing, it defaults to `Pending`
-- If status is provided, it must be one of: `Pending`, `Matched`, `Completed`, `Cancelled`
-
-## Example JSON Data
-
-### Donor Example
+### Add Donor
 
 ```json
 {
@@ -121,7 +95,7 @@ capst/
 }
 ```
 
-### Emergency Request Example
+### Add Emergency Request
 
 ```json
 {
@@ -137,13 +111,86 @@ capst/
 }
 ```
 
-## Sample Success Response
+## Validation Rules
+
+### Donor validation
+
+- Name is required
+- Blood group must be one of: `A+`, `A-`, `B+`, `B-`, `O+`, `O-`, `AB+`, `AB-`
+- Contact must be exactly 10 digits
+- Location is required
+- Availability must be one of: `Available`, `Busy`, `Unavailable`
+- If no donation date is entered, it stores as `Never donated`
+- If no notes are entered, it stores as `First-time donor.`
+
+### Emergency request validation
+
+- Required blood group is required and must be valid
+- Quantity must be a positive whole number
+- Patient name, hospital name, location, date-time, description, and contact are required
+- Contact must be exactly 10 digits
+- Status defaults to `Pending` if not supplied
+- Status must be one of: `Pending`, `Matched`, `Completed`, `Cancelled`
+
+## How to Run
+
+1. Go to the project folder:
+
+```bash
+cd capst
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the backend server:
+
+```bash
+npm start
+```
+
+The backend runs on:
+
+```text
+http://localhost:3000
+```
+
+4. Open the frontend in the browser:
+
+- Open `frontend/index.html` directly in a browser
+
+## API Example Response
+
+### GET `/donors`
+
+```json
+{
+  "message": "Donors fetched successfully.",
+  "donors": [
+    {
+      "id": 1,
+      "name": "Asha Verma",
+      "bloodGroup": "O+",
+      "contact": "9876543210",
+      "location": "Bangalore",
+      "availability": "Available",
+      "lastDonationDate": "2024-06-15",
+      "notes": "Available for urgent emergency blood donations."
+    }
+  ]
+}
+```
+
+### POST `/requests`
 
 ```json
 {
   "message": "Emergency request created successfully.",
   "request": {
-    "id": 1,
+    "id": 3,
     "requiredBloodGroup": "O+",
     "quantity": 2,
     "patientName": "Raju",
@@ -159,8 +206,24 @@ capst/
 
 ## Important Notes
 
-- **Educational Project:** Designed for college evaluation and learning purposes
-- **Separated Architecture:** Frontend and backend are intentionally decoupled for clear separation of concerns
-- **Postman Testing:** Use Postman to test the backend API endpoints
-- **No Persistence:** Data exists only in memory during the session and is lost when the server restarts
-- **No Authentication:** This version does not include user authentication or security features
+- This project is intended for college-level learning and evaluation.
+- The frontend and backend are intentionally separated.
+- Data is stored in memory only and resets when the server restarts.
+- No authentication or database is included in this version.
+
+## GitHub Setup
+
+```bash
+git init
+git add .
+git commit -m "Project commit v1"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git push -u origin main
+```
+
+Replace the GitHub URL with your repo before pushing.
+
+## Conclusion
+
+This project demonstrates CRUD operations for blood donation management in a simple and beginner-friendly way. It is useful for academic demonstration, API testing, and practicing backend development with Express.js.
